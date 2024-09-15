@@ -7,10 +7,11 @@ class DirectMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
+    final dark = CHelperFunctions.isDarkMode(context);
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: CColor.darkGrey,
+        backgroundColor: dark ? CColor.dark : CColor.textsecondary,
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
@@ -22,9 +23,9 @@ class DirectMessage extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        title: const Text(
-          'How can we help?',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: CColor.black),
+        title:  Text(
+            'How can we help?',
+            style: CtextTheme.Welcomestyle
         ),
       ),
       body: Column(children: [

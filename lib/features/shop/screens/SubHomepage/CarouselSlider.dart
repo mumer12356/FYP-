@@ -1,3 +1,5 @@
+import 'package:carousel_slider/carousel_slider.dart'as carousel;
+
 import '../../../../../utils/constants/exports.dart';
 
 class CarouselSliderHome extends StatefulWidget {
@@ -47,7 +49,7 @@ class _CarouselSliderHomeState extends State<CarouselSliderHome> {
             }
             if (snapshot.hasData && snapshot.data != null) {
               List<String> imageUrls = snapshot.data!;
-              return CarouselSlider(
+              return carousel.CarouselSlider(
                 items: imageUrls.map((imageUrl) {
                   return Container(
                     margin: const EdgeInsets.symmetric(horizontal: 5),
@@ -59,7 +61,7 @@ class _CarouselSliderHomeState extends State<CarouselSliderHome> {
                     ),
                   );
                 }).toList(),
-                options: CarouselOptions(
+                options: carousel.CarouselOptions(
                   autoPlay: true,
                   enlargeCenterPage: true,
                   aspectRatio: 10 / 9,

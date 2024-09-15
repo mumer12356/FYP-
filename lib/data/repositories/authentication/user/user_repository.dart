@@ -1,5 +1,7 @@
 
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../../../utils/constants/exports.dart';
 
 /// Repository class for user related operation

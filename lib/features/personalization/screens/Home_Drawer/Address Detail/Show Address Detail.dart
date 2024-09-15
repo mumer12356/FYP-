@@ -48,11 +48,7 @@ class _ShoeAddressDetailState extends State<ShoeAddressDetail> {
   }
 
   void _animateTexts() async {
-    // await Future.delayed(Duration(seconds: 1));
-    // setState(() {
-    //   _showtemporaryAddress = true;
-    // });
-
+    
     await Future.delayed(const Duration(seconds: 1));
     setState(() {
       _showpermanentAddress = true;
@@ -67,20 +63,19 @@ class _ShoeAddressDetailState extends State<ShoeAddressDetail> {
       _showhouseNumber = true;
     });
   }
+  
   @override
   Widget build(BuildContext context) {
     final dark = CHelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Address Details'),
+        backgroundColor: dark ? CColor.dark : CColor.textsecondary,
+        title:  Text('Address Detail',style: CtextTheme.Welcomestyle),
         leading: InkWell(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child:  Icon(Icons.arrow_back_ios,
-          color: dark ? CColor.dark.withOpacity(0.1) : CColor.white.withOpacity(0.1),
-          ),
-        ),
+            onTap: () {
+              Get.to(()=> HomeScreen());
+            },
+            child: const Icon(Icons.arrow_back_ios)),
       ),
       body: SingleChildScrollView(
         child: Padding(

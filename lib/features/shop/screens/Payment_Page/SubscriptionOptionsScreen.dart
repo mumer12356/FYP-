@@ -7,9 +7,12 @@ class SubscriptionOptionsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = CHelperFunctions.isDarkMode(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Subscription Plans'),
+        backgroundColor: dark ? CColor.dark : CColor.textsecondary,
+        title:  Text('Subscription Plans',style: CtextTheme.Welcomestyle),
       ),
       body:
       ListView(

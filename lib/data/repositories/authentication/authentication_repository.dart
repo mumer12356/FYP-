@@ -4,13 +4,9 @@ import '../../../../utils/constants/exports.dart';
   class AuthenticationRepository extends GetxController{
     static AuthenticationRepository get instance => Get.find();
 
-
-
-
     /// Variables
     final deviceStorage = GetStorage();
     final auth = FirebaseAuth.instance;
-
 
     /// Get Authenticated User Data
     User? get authUser => auth.currentUser;
@@ -28,7 +24,7 @@ import '../../../../utils/constants/exports.dart';
       final user = auth.currentUser ;
       if(user != null){
         if(user.emailVerified){
-          Get.offAll(()=>  const NavigationMenu(
+          Get.offAll(()=>  const HomeScreen(
 
             // cartItems: cartController.cartItems,
           ));
@@ -41,12 +37,9 @@ import '../../../../utils/constants/exports.dart';
         deviceStorage.read('IsFirstTime') != true
             ? Get.offAll(()=>  const LoginScreen())
             : Get.offAll(const OnBoardingScreen());
-      }
-    }
-
+      }}
 
   /* ............ Email & Password sign-in ................*/
-
     /// [EmailAuthentication] - SignIn
     Future<UserCredential> loginWithEmailAndPassword(String email, String password) async {
       try {
@@ -59,8 +52,7 @@ import '../../../../utils/constants/exports.dart';
         throw const TFormatException();
       } catch (e) {
         throw 'Something went wrong, please try again';
-      }
-    }
+      } }
 
     /// [EmailAuthentication] REGISTER
     Future<UserCredential> registerWithEmailAndPassword(String email, String password) async {
@@ -74,8 +66,7 @@ import '../../../../utils/constants/exports.dart';
         throw const TFormatException();
       } catch (e) {
         throw 'Something went wrong, please try again';
-      }
-    }
+      } }
 
     ///
     /// [ReAuthenticate] ReAuthenticate User
@@ -83,10 +74,8 @@ import '../../../../utils/constants/exports.dart';
       try {
         // Create Credential
         AuthCredential credential = EmailAuthProvider.credential(email: email, password: password);
-
         // Re-Authenticate
         await auth.currentUser!.reauthenticateWithCredential(credential);
-
       } on FirebaseAuthException catch (e) {
         throw TFirebaseAuthException(e.code).message;
       } on FirebaseException catch (e) {
@@ -95,9 +84,7 @@ import '../../../../utils/constants/exports.dart';
         throw const TFormatException();
       } catch (e) {
         throw 'Something went wrong. Please try again';
-      }
-    }
-
+      }}
 
     /// [EmailAuthentication] FORGET PASSWORD
     Future<void> sendPasswordResetEmail(String email) async {
@@ -111,8 +98,7 @@ import '../../../../utils/constants/exports.dart';
         throw const TFormatException();
       } catch (e) {
         throw 'Something went wrong. Please try again';
-      }
-    }
+      }}
 
     /// [EmailVerification] MAIL VERIFICATION
     Future<void> sendEmailVerification() async {
@@ -126,14 +112,9 @@ import '../../../../utils/constants/exports.dart';
         throw const TFormatException();
       } catch (e) {
         throw 'Something went wrong. Please try again';
-      }
-    }
-
-
+      }}
 
 /* ............ Federated identity & social sign-in ................*/
-
-
     /// [GoogleAuthentication] GOOGLE
     /// [GoogleAuthentication] GOOGLE
     Future<UserCredential?> signInWithGoogle() async {
@@ -143,20 +124,16 @@ import '../../../../utils/constants/exports.dart';
         if (userAccount == null) {
           throw 'User canceled the sign-in process';
         }
-
         // Obtain the auth details from the request
         final GoogleSignInAuthentication googleAuth = await userAccount.authentication;
-
         // Create a new credential
         final credential = GoogleAuthProvider.credential(
           accessToken: googleAuth.accessToken,
           idToken: googleAuth.idToken,
         );
-
         // Once signed in, return the UserCredential
         final userCredential = await auth.signInWithCredential(credential);
         return userCredential;
-
       } on FirebaseAuthException catch (e) {
         throw TFirebaseAuthException(e.code).message;
       } on FirebaseException catch (e) {
@@ -165,9 +142,7 @@ import '../../../../utils/constants/exports.dart';
         throw const TFormatException();
       } catch (e) {
         throw 'Something went wrong. Please try again';
-      }
-    }
-
+      }}
 
     /* ............ ./end Federated identity & social sign-in ................*/
 
@@ -177,7 +152,6 @@ import '../../../../utils/constants/exports.dart';
         await GoogleSignIn().signOut();
         await FirebaseAuth.instance.signOut();
         Get.offAll(()=> const LoginScreen());
-
       } on FirebaseAuthException catch (e) {
         throw TFirebaseAuthException(e.code).message;
       } on FirebaseException catch (e) {
@@ -186,11 +160,8 @@ import '../../../../utils/constants/exports.dart';
         throw const TFormatException();
       } catch (e) {
         throw 'Something went wrong. Please try again';
-      }
-    }
+      }}
 
-
-    ///
     /// DELETE USER Remove user Auth and Firestore Account.
     Future<void> deleteAccount() async {
       try {
@@ -204,8 +175,6 @@ import '../../../../utils/constants/exports.dart';
         throw const TFormatException();
       } catch (e) {
         throw 'Something went wrong. Please try again';
-      }
-    }
-
+      }}
   }
 

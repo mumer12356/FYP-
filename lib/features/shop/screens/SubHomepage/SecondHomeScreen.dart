@@ -35,11 +35,12 @@ class _SubHomeScreenState extends State<SubHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final dark = CHelperFunctions.isDarkMode(context);
 
     return Scaffold(
       appBar: AppBar(
         title: Text(appBarTitle,style: CtextTheme.Welcomestyle,),
-        backgroundColor: Colors.transparent,
+        backgroundColor: dark ? CColor.dark : CColor.textsecondary,
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),

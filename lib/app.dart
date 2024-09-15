@@ -16,7 +16,4 @@ class MyApp extends StatelessWidget {
       home: const Scaffold(
         backgroundColor: CColor.primary, body: Center(child:  CircularProgressIndicator(color: Colors.white,),),
       ),
-
-    );
-  }
-}
+    );}}

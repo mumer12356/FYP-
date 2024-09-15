@@ -22,9 +22,11 @@ class AllCategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = CHelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('All Categories'),
+        title:  Text('All Categories',style: CtextTheme.Welcomestyle),
+        backgroundColor: dark ? CColor.dark : CColor.textsecondary,
       ),
       body: GridView.count(
         crossAxisCount: 2, // Two categories per row

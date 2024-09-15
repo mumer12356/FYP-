@@ -1,5 +1,7 @@
 
 import '../../../../../utils/constants/exports.dart';
+import '../../controllers/favorite_controller.dart';
+import '../favourite_page/favourite_page.dart';
 
 class PaddingSubHomeScreenContainer extends StatefulWidget {
   final dynamic detail;
@@ -58,14 +60,35 @@ class _PaddingSubHomeScreenContainerState extends State<PaddingSubHomeScreenCont
 
   // Method to build the container with the loaded image
   Widget buildContainer(String imagePath) {
+
+    // Access the favorites controller
+    final FavoritesController favoritesController = Get.put(FavoritesController());
+
     final dark = CHelperFunctions.isDarkMode(context);
 
     final String category = getCategoryFromDetail(widget.detail); // Get the category of the detail object
     final String ratingString = widget.detail.rating; // Get the rating string from the detail object
     final double rating = double.tryParse(ratingString.split(' ').first) ?? 0.0; // Parse the rating value
 
-    return Padding(
+    // Determine whether the item is a favorite
+    bool isFavorite = false;
+    if (widget.detail is ContractorDetails) {
+      isFavorite = favoritesController.favoriteContractors.contains(widget.detail);
+    } else if (widget.detail is LaborerDetails) {
+      isFavorite = favoritesController.favoriteLaborers.contains(widget.detail);
+    }
+    else if (widget.detail is ElectricianDetails) {
+      isFavorite = favoritesController.favoriteElectricians.contains(widget.detail);
+    }else if (widget.detail is PlumberDetails) {
+      isFavorite = favoritesController.favoritePlumbers.contains(widget.detail);
+    }
+    else if (widget.detail is PainterDetails) {
+      isFavorite = favoritesController.favoritePainters.contains(widget.detail);
+    }else if (widget.detail is WelderDetails) {
+      isFavorite = favoritesController.favoriteWelders.contains(widget.detail);
+    }
 
+    return Padding(
       padding: const EdgeInsets.only(left: 10.0,right: 10,top: 30),
       child: Container(
         height: 250, // Set the height of the container
@@ -109,6 +132,7 @@ class _PaddingSubHomeScreenContainerState extends State<PaddingSubHomeScreenCont
               ),
             ),
 
+
             Positioned(
               top: -8,
               right: -8,
@@ -127,40 +151,39 @@ class _PaddingSubHomeScreenContainerState extends State<PaddingSubHomeScreenCont
                 ),
                 child:
                 IconButton(
-                  // onPressed: () {
-                  //   FavoriteProvider.addToFavourites(widget.detail);
-                  //   // Navigate to FavouritePage after adding to favourites
-                  //   Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(builder: (context) => FavouritePage()),
-                  //   );
-                  // },
-                  // icon: Icon(
-                  //
-                  //   favouriteProvider.favourites.any((f) => f.id == widget.detail.id)
-                  //       ? Icons.favorite
-                  //       : Icons.favorite_border,
-                  // ),
+                  onPressed: () {
+                    if (widget.detail is ContractorDetails) {
+                      favoritesController.toggleFavoriteContractor(widget.detail);
+                    } else if (widget.detail is LaborerDetails) {
+                      favoritesController.toggleFavoriteLaborer(widget.detail);
+                    }
+                    else if (widget.detail is ElectricianDetails) {
+                      favoritesController.toggleFavoriteElectrician(widget.detail);
+                    }else if (widget.detail is PlumberDetails) {
+                      favoritesController.toggleFavoritePlumber(widget.detail);
+                    }
+                    else if (widget.detail is PainterDetails) {
+                      favoritesController.toggleFavoritePainter(widget.detail);
+                    }else if (widget.detail is WelderDetails) {
+                      favoritesController.toggleFavoriteWelder(widget.detail);
+                    }
+                    // Navigate to the FavoritesPage
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => FavoritesPage(),
+                    ));
 
-                  onPressed: (){},
-                  icon: const Icon(Icons.favorite),
-                  // onPressed: () {
-                  //   if (widget.detail != null) {
-                  //     Provider.of<FavoriteProvider>(context, listen: false).addToFavourites(widget.detail);
-                  //     Navigator.push(
-                  //       context,
-                  //       MaterialPageRoute(builder: (context) => const FavouritePage()),
-                  //     );
-                  //   }
-                  // },
-                  // icon: Icon(
-                  //   Provider.of<FavoriteProvider>(context).favourites.any((f) => f.id == widget.detail.id)
-                  //       ? Icons.favorite
-                  //       : Icons.favorite_border,
-                  // ),
+                    setState(() {
+                      // Trigger a rebuild to update the favorite icon
+                    });
+                  },
+                  icon: Icon(
+                    isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: isFavorite ? Colors.red : Colors.grey,
+                  ),
                 ),
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(

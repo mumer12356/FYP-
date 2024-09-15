@@ -44,7 +44,8 @@ class VerifyEmailController extends GetxController{
               timer.cancel();
               Get.off(
                     () => SuccessScreen(
-                  image: CImages.docerAnimation,
+                      isNetworkImage: true,
+                  image: CImages.accountCreated,
                   title: CTexts.yourAccountCreatedTitle,
                   subTiltle: CTexts.yourAccountCreatedSubTitle,
                   onPressed: () => AuthenticationRepository.instance.screenRedirect(),

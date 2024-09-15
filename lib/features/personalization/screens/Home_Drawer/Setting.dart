@@ -19,11 +19,19 @@ class _SettingState extends State<Setting> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(UserController());
+    final dark = CHelperFunctions.isDarkMode(context);
 
     Size size=MediaQuery.sizeOf(context);
     return Scaffold(
-
-      appBar: const CAppBAr(title: Text('Settings',) ),
+      appBar: AppBar(
+        backgroundColor: dark ? CColor.dark : CColor.textsecondary,
+        title:  Text('Settings',style: CtextTheme.Welcomestyle),
+        leading: InkWell(
+            onTap: () {
+              Get.to(()=> HomeScreen());
+            },
+            child: const Icon(Icons.arrow_back_ios)),
+      ),
 
       body: ListView(
         children: [

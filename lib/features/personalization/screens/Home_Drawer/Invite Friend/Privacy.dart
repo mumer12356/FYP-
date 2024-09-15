@@ -6,139 +6,51 @@ class Privacy extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = CHelperFunctions.isDarkMode(context);
+
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: dark ? CColor.dark : CColor.textsecondary,
+        title: Text('How it works:', style: CtextTheme.Welcomestyle),
+        leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: const Icon(Icons.arrow_back_ios)),
+      ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(top: 40,left: 20),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GestureDetector(
-                  onTap: (){
-                    // Navigator.of(context).push(
-                    //     MaterialPageRoute(builder: (context) => const InviteFriends(),)
-                    // );
-                    Navigator.pop(context);
-                  },
-                  child:  const Icon(
-                    Icons.arrow_back,size: 30,color: CColor.black,)),
-              const SizedBox(height: 50,),
-
-               const Text('How it works',
-                style: TextStyle(color:CColor.primary,
-                    fontSize: 25,fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10,),
-              const Padding(
-                padding: EdgeInsets.all(1),
-                child: Text('Share your invite link with friends. Once they sign'
-                    'up for a free account with your link, a fee voucher is automatically'
-                    'applied at checkout for them. After they place their first order,'
-                    'your voucher will be sent to you and automatically applied'
-                    'at checkout for you',textScaleFactor: 1,
-                  style: TextStyle(
-                      fontSize: 19),
+              Center(
+                child: Image(
+                  image: NetworkImage(
+                      "https://firebasestorage.googleapis.com/v0/b/home-app-62d66.appspot.com/o/Assets%2Fshare%2Fworks.jfif?alt=media&token=d92b6dce-397f-4e9d-a57d-149711cd5b76"),
                 ),
               ),
-
-              const SizedBox(height: 20,),
-
-              const Column(
-                children: [
-                  Row(
-                    //crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CircleAvatar(
-                        radius: 4,
-                        backgroundColor: CColor.black,
-                      ),
-
-                      Text('Offer valid on restaurant order of',
-                        style: TextStyle(
-                          fontSize: 20,),
-                      ),
-                    ],
-                  ),
-                  Text('first order or more',
-                    style: TextStyle(
-                        fontSize: 20),
-                  ),
-                ],
+              const SizedBox(height: 20),
+              const Text(
+                'Share your invite link with friends. Once they sign up for a free account with your link, a fee voucher is automatically applied at checkout for them. After they place their first order, your voucher will be sent to you and automatically applied at checkout for you.',
+                style: TextStyle(fontSize: 14),
               ),
-
-              const SizedBox(height: 20,),
-              const Column(
-                children: [
-                  Row(
-                    //crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CircleAvatar(
-                        radius: 4,
-                        backgroundColor: CColor.black,
-                      ),
-                      //SizedBox(width: 20,),
-                      Text('You can invite up to 10 friends ',
-                        style: TextStyle(
-                          fontSize: 20,),
-                      ),
-                    ],
-                  ),
-                  Text('who have never made a restaurant order on foodies before',
-                    style: TextStyle(
-                        fontSize: 20),
-                  ),
-                ],
+              const SizedBox(height: 30),
+              const Text(
+                '• You can invite up to 10 friends who have never made an order before',
+                style: TextStyle(fontSize: 15),
               ),
-
-              const SizedBox(height: 20,),
-              const Column(
-                children: [
-                  Row(
-                    //crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CircleAvatar(
-                        radius: 4,
-                        backgroundColor: CColor.black,
-                      ),
-                      //SizedBox(width: 20,),
-                      Text('Your voucher expires 30 days ',
-                        style: TextStyle(
-                          fontSize: 20,),
-                      ),
-                    ],
-                  ),
-                  Text('after ypu receive it',
-                    style: TextStyle(
-                        fontSize: 20),
-                  ),
-                ],
+              const SizedBox(height: 10),
+              const Text(
+                '• Your voucher expires 30 days after you receive it',
+                style: TextStyle(fontSize: 15),
               ),
-
-              const SizedBox(height: 20,),
-              const Column(
-                children: [
-                  Row(
-                    //crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CircleAvatar(
-                        radius: 4,
-                        backgroundColor: CColor.black,
-                      ),
-                      //SizedBox(width: 20,),
-                      Text('Your friends voucher expires ',
-                        style: TextStyle(
-                          fontSize: 20,),
-                      ),
-                    ],
-                  ),
-                  Text('30 days after they have sign up',
-                    style: TextStyle(
-                        fontSize: 20),
-                  ),
-                ],
+              const SizedBox(height: 10),
+              const Text(
+                '• Your friends’ voucher expires 30 days after they have signed up',
+                style: TextStyle(fontSize: 15),
               ),
-
-              const SizedBox(height: 50,),
+              const SizedBox(height: 50),
             ],
           ),
         ),

@@ -37,9 +37,12 @@ class _PaymentPageState extends State<PaymentPage> {
 
   @override
   Widget build(BuildContext context) {
+    final dark = CHelperFunctions.isDarkMode(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Payment'),
+        backgroundColor: dark ? CColor.dark : CColor.textsecondary,
+        title:  Text('Payment',style: CtextTheme.Welcomestyle),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

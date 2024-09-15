@@ -87,8 +87,15 @@ class _SBDetailState extends State<SBDetail> {
   Widget build(BuildContext context) {
     final dark = CHelperFunctions.isDarkMode(context);
     return Scaffold(
-      backgroundColor: dark ? CColor.dark : CColor.white,
-      appBar: const CAppBAr(title: Text('Personal Details',) ),
+      appBar: AppBar(
+        backgroundColor: dark ? CColor.dark : CColor.textsecondary,
+        title:  Text('Personal Detail',style: CtextTheme.Welcomestyle),
+        leading: InkWell(
+            onTap: () {
+              Get.to(()=> HomeScreen());
+            },
+            child: const Icon(Icons.arrow_back_ios)),
+      ),
 
       body: SingleChildScrollView(
         child: Padding(
@@ -201,33 +208,9 @@ class _SBDetailState extends State<SBDetail> {
                 ],
               ),
 
-
               const SizedBox(
                 height: CSizes.md,
               ),
-
-              // ElevatedButton(
-              //     onPressed: isCNICUploaded
-              //         ? () async {
-              //       await _saveUserData();
-              //       Navigator.push(
-              //         context,
-              //         MaterialPageRoute(
-              //           builder: (context) =>
-              //               Profile(
-              //             fullName: fullNameController.text,
-              //             fatherName: fatherNameController.text,
-              //             cnic: cnicController.text,
-              //             phone: phoneController.text,
-              //           ),
-              //         ),
-              //       );
-              //     }
-              //     : null, // Disable the button if CNIC images are not uploaded
-              //     child:  Text('Submit',
-              //    // style: TextStyle(color: dark ? CColor.dark : CColor.white),
-              //     ),
-              //     ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orange, // Background color

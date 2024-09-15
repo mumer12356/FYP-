@@ -21,7 +21,6 @@ class CSocialButtons extends StatelessWidget {
           ),
           child: IconButton(
               onPressed: () => controller.googleSignIn(),
-            //onPressed: () => controller.googleSignIn(),
               icon: Image.network(
                 CImages.googleImageUrl,
                 width: CSizes.iconMd,

@@ -69,19 +69,6 @@ class _ChatPageState extends State<ChatPage> {
     _sendMessage(widget.initialMessage);
   }
 
-  // void _sendMessage([String? userQuestion]) {
-  //   //final userQuestion = _controller.text;
-  //   final question = userQuestion ?? _controller.text;
-  //
-  //   if (userQuestion.isNotEmpty) {
-  //     final answer = getAnswer(userQuestion);
-  //     setState(() {
-  //       _messages.add({"question": userQuestion, "answer": answer});
-  //       _controller.clear();
-  //     });
-  //     _scrollToBottom();
-  //   }
-  // }
   void _sendMessage([String? userQuestion]) {
     final question = userQuestion ?? _controller.text;
     if (question.isNotEmpty) {
@@ -108,10 +95,12 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
+    final dark = CHelperFunctions.isDarkMode(context);
+
     return Scaffold(
-      backgroundColor: CColor.darkGrey,
+      backgroundColor: dark ? CColor.dark : CColor.textsecondary,
       appBar: AppBar(
-        title: const Text("Chat Support"),
+        title:  Text("Chat Support",style: CtextTheme.Welcomestyle),
       ),
       body: Column(
         children: [

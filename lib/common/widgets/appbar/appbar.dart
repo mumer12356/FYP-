@@ -18,7 +18,7 @@ class CAppBAr extends StatelessWidget implements PreferredSizeWidget{
     final dark = CHelperFunctions.isDarkMode(context);
 
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: CSizes.md),
+        padding: const EdgeInsets.symmetric(horizontal: CSizes.xs),
       child:  AppBar(
         automaticallyImplyLeading: false,
         leading: showBackArrow

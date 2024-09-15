@@ -1,6 +1,7 @@
 
 import 'dart:io';
 import '../../../../../utils/constants/exports.dart';
+import '../../../shop/screens/favourite_page/favourite_page.dart';
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer({super.key});
@@ -229,7 +230,10 @@ class _HomeDrawerState extends State<HomeDrawer> {
             ListTile(
               title: const Text('Favourite'),
               leading: const Icon(Icons.favorite_border_outlined),
-              onTap: () {},
+              onTap: () {
+                // Navigate to FavoritesPage
+                Get.to(() =>  FavoritesPage());
+              },
             ),
 
             /// Chat Support

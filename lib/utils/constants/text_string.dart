@@ -5,12 +5,12 @@ class CTexts{
   static const String onBoardingTitle2= "";
   static const String onBoardingTitle3= "";
 
-  static const String onBoardingSubTitle1= "1. Ghar ke har kaam ka ek saathi - Karigar Pro, jo har zarurat ko aasan banata hai. "
-      "2. Karigar Pro: Aapke ghar ka har kaam ek chhupe hue talent ki talash mein.";
-  static const String onBoardingSubTitle2= "1. Find the right service for your needs and book with ease."
-      "2. Select from a range of services and schedule your appointment hassle-free.";
-  static const String onBoardingSubTitle3= "1. Get ready to explore a variety of services tailored to your needs and preferences."
-      "2. Discover the diverse range of services we offer to enhance your experience.";
+  static const String onBoardingSubTitle1= "Ghar ke har kaam ka ek saathi - Karigar Pro, jo har zarurat ko aasan banata hai. "
+      "Karigar Pro: Aapke ghar ka har kaam ek chhupe hue talent ki talash mein.";
+  static const String onBoardingSubTitle2= "Find the right service for your needs and book with ease."
+      "Select from a range of services and schedule your appointment hassle-free.";
+  static const String onBoardingSubTitle3= "Get ready to explore a variety of services tailored to your needs and preferences."
+      "Discover the diverse range of services we offer to enhance your experience.";
 
   // Authentication Form Text
   static const String firstName = "First Name";
@@ -49,8 +49,8 @@ class CTexts{
 
   static const String confirmEmail = "Verify your email address!";
   static const String confirmEmailSubTitle = "Congratulations! Your Account Awaits: "
-      "Verify Your Email to Start Shopping and Experience a World of Unrivaled Deals and Personalized Offers.";
+      "Verify Your Email to Start and Experience a World of Unrivaled Deals and Personalized Offers.";
   static const String yourAccountCreatedTitle="Your account successfully created!";
-  static const String yourAccountCreatedSubTitle="Welcome to Your Ultimate Shopping Destination:"
-      "Your Account is Created. Unleash the Joy of Seamless Online Shopping!";
+  static const String yourAccountCreatedSubTitle="Welcome to Your Ultimate Destination:"
+      "Your Account is Created. Unleash the Joy of Seamless Online Experience!";
 }

@@ -70,12 +70,14 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
+    final dark = CHelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile'),
+        backgroundColor: dark ? CColor.dark : CColor.textsecondary,
+        title:  Text('Profile',style: CtextTheme.Welcomestyle),
         leading: InkWell(
           onTap: () {
-            Navigator.pop(context);
+          Get.to(()=> HomeScreen());
           },
             child: const Icon(Icons.arrow_back_ios)),
       ),

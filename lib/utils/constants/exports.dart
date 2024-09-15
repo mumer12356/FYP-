@@ -1,6 +1,6 @@
 
 /// Dart Imports
-library;
+
 export 'package:flutter/material.dart';
 export 'package:iconsax/iconsax.dart';
 export 'dart:async';
@@ -15,7 +15,7 @@ export 'package:home_services_app/app.dart';
 
 ///# Firebase Imports
 export 'package:firebase_core/firebase_core.dart';
-export 'package:cloud_firestore/cloud_firestore.dart';
+// export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:firebase_auth/firebase_auth.dart';
 export 'package:firebase_storage/firebase_storage.dart';
 export 'package:home_services_app/firebase_options.dart';
@@ -30,7 +30,7 @@ export 'package:shimmer/shimmer.dart';
 export 'package:image_picker/image_picker.dart';
 export 'package:flutter_native_splash/flutter_native_splash.dart';
 export '../../common/widgets/animation/login_animation/login_animation.dart';
-export 'package:carousel_slider/carousel_slider.dart';
+// export 'package:carousel_slider/carousel_slider.dart';
 export 'package:url_launcher/url_launcher_string.dart';
 export '../../common/widgets/loaders/animation_loader.dart';
 
@@ -165,7 +165,7 @@ export '../../features/personalization/screens/Home_Drawer/Drawer.dart';
 
 
 // SHOP
-export '../../features/shop/navigation_menu.dart';
+export '../../features/shop/controllers/navigation_controller.dart';
 export '../../features/shop/screens/Home/home.dart';
 export '../../features/shop/screens/Payment_Page/SubscriptionOptionsScreen.dart';
 export '../../features/shop/screens/DetailPage/Service_Detail/ServiceDetail.dart';

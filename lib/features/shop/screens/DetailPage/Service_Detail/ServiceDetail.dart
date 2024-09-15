@@ -46,7 +46,8 @@ class _ServiceDetailSectionState extends State<ServiceDetailSection> {
     return Scaffold(
       backgroundColor: dark ? CColor.dark : CColor.white,
       appBar: AppBar(
-        title: Text(appBarTitle.value),
+        title: Text(appBarTitle.value,style: CtextTheme.Welcomestyle),
+        backgroundColor: dark ? CColor.dark : CColor.textsecondary,
       ),
       body: Hero(
         tag: uniqueTag, // Ensure the tag is unique for each detail

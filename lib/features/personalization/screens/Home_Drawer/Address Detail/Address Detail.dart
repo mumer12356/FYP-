@@ -35,9 +35,17 @@ class _AddressPageState extends State<AddressPage> {
 
   @override
   Widget build(BuildContext context) {
+    final dark = CHelperFunctions.isDarkMode(context);
     return Scaffold(
-      appBar: const CAppBAr(title: Text('Address Details',) ),
-
+      appBar: AppBar(
+        backgroundColor: dark ? CColor.dark : CColor.textsecondary,
+        title:  Text('Address Detail',style: CtextTheme.Welcomestyle),
+        leading: InkWell(
+            onTap: () {
+              Get.to(()=> HomeScreen());
+            },
+            child: const Icon(Icons.arrow_back_ios)),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [

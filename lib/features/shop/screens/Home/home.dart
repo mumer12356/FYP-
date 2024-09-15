@@ -1,6 +1,7 @@
 
 import '../../../../../utils/constants/exports.dart';
 import '../../../../utils/constants/Alignments.dart';
+import '../favourite_page/favourite_page.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,33 +12,19 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin{
 
-  //bool _showSubscriptionDialog = true;
-  //bool subscriptionDialogVisible = true;
    late TabController tabController;
-  //
-  //
-  final ValueNotifier<bool> _showSubscriptionIcon = ValueNotifier<bool>(false);
+   final ValueNotifier<bool> _showSubscriptionIcon = ValueNotifier<bool>(false);
+   final controller = Get.put(NavigationController());
 
-  // Method to toggle bottom bar visibility
-  // void toggleBottomBarVisibility(bool isVisible) {
-  //   setState(() {
-  //     _showSubscriptionIcon.value = isVisible;
-  //   });
-  // }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-
-
     tabController = TabController(length: 3, vsync: this);
     tabController.addListener(() {
       if(tabController.indexIsChanging){
-
-        if(tabController.index==0){
-
-        }
+        if(tabController.index==0){ }
         else if(tabController.index==1){
           Get.to(() => AllCategoriesScreen(
             contractors: contractors,
@@ -68,16 +55,10 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     super.dispose();
     tabController.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     final dark = CHelperFunctions.isDarkMode(context);
-
-    // Delay showing the subscription dialog
-    // Future.delayed(const Duration(seconds: 2), () {
-    //   if (_showSubscriptionDialog) {
-    //     showSubscriptionDialog(context);
-    //   }
-    // });
 
     return Scaffold(
       backgroundColor: Colors.red,
@@ -85,14 +66,12 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
 
       drawer: const HomeDrawer(),
 
-
-      body:  Hero(
-        tag: 'home_screen',
-        child: DefaultTabController(
-          length: 3, // Number of tabs
+      body:  DefaultTabController(
+        length: 3,
+        child: Hero(
+          tag: 'home_screen',
           child: Column(
             children: [
-
               Expanded(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
@@ -128,7 +107,6 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                             Tab(text: 'Best Seller'),
                           ],
                         ),
-
 
                         Padding(
                           padding: const EdgeInsets.only(left: 10.0),
@@ -200,8 +178,43 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           ),
         ),
       ),
+      bottomNavigationBar: Obx(() {
+        final index = controller.selectedIndex.value;
+
+        return NavigationBar(
+          height: 80,
+          elevation: 0,
+          selectedIndex: index,
+          onDestinationSelected: (selectedIndex) {
+            controller.selectedIndex.value = selectedIndex;
+            if (selectedIndex == 0) {
+              // Navigate to Home
+              Get.to(() =>  FavoritesPage());
+            } else if (selectedIndex == 1) {
+              // Navigate to Subscription
+              showSubscriptionDialog(context);
+            } else if (selectedIndex == 2) {
+              // Navigate to Support Screen
+              Get.to(() => DirectMessage());
+            } else if (selectedIndex == 3) {
+              // Log out user
+              Get.find<AuthenticationRepository>().logout();
+              Get.offAll(() => LoginScreen()); // Redirect to login screen after logout
+            }
+          },
+          backgroundColor: dark ? CColor.dark : CColor.white,
+          indicatorColor: dark ? CColor.dark.withOpacity(0.1) : CColor.white.withOpacity(0.1),
+          destinations: const [
+            NavigationDestination(icon: Icon(Icons.favorite_border_outlined), label: 'Favourite'),
+            NavigationDestination(icon: Icon(Icons.subscriptions_outlined), label: 'Subscription'),
+            NavigationDestination(icon: Icon(Icons.help_outline_outlined), label: 'Support'),
+            NavigationDestination(icon: Icon(Iconsax.user_octagon), label: 'Profile'),
+          ],
+        );
+      }),
     );
   }
+
 
   void showSubscriptionDialog(BuildContext context){
     showDialog(
@@ -215,14 +228,6 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           actions: [
             TextButton(
               onPressed: () {
-                // toggleBottomBarVisibility(true); // Show bottom bar
-                // _showSubscriptionDialog=false;
-
-                // setState(() {
-                //   _showSubscriptionDialog =false;
-                //   subscriptionDialogVisible = false;
-                //
-                // });
                 _showSubscriptionIcon.value = true;
                 Navigator.of(context).pop(); // Close the dialog
               },
@@ -271,5 +276,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       },
     );
   }
+
 }
+
+
+
 

@@ -48,7 +48,9 @@ class _InviteFriendsState extends State<InviteFriends> {
                   height: size.height*0.30,
                   margin: const EdgeInsets.only(top: 20,right: 20),
                   child: const Image(
-                      image: AssetImage('Assets/illustration-forgot-password-icon-on-260nw-784783666.webp'))),
+                      image: 
+                      NetworkImage("https://firebasestorage.googleapis.com/v0/b/home-app-62d66.appspot.com/o/Assets%2Fshare%2Fshare%20pic.jfif?alt=media&token=f52a825f-5b82-4096-9fd2-c288061fe6a0")
+                  )),
 
               const Padding(
                 padding: EdgeInsets.only(top: 40),

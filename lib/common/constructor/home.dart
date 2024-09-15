@@ -1,5 +1,5 @@
-import '../../utils/constants/exports.dart';
 
+/// Home Screen Slider
 final List<String> images = [
   'home decorating ideas things.jpg',
   'Renovation Journey_ Surprise At Every Turn.jpg',
@@ -8,7 +8,7 @@ final List<String> images = [
 ];
 
 
-
+/// Subhome Home Screen Slider
 final List<String> ContractorImages=[
   'Free Vector _ Isolated construction site with workers.jpg',
   'Home Improvement Contractor - Marwood Construction.jpg',
@@ -22,6 +22,7 @@ final List<String> ContractorImages=[
 ];
 
 
+/// Home Screen Category Section
 final List<String> category = [
   'Home constructor.jpg',
   'labrorer.jpg',
@@ -40,6 +41,8 @@ final List<String> CategoryText=[
 ];
 
 
+
+
 // Define a class to represent services
 ///Used In detail Screen
 class Service {
@@ -49,34 +52,39 @@ class Service {
   Service(this.name, this.price);
 }
 
-class ConstructionDetails {
-  List<ContractorDetails> contractors;
-  List<LaborerDetails> laborers;
-  List<ElectricianDetails> electricians;
-  List<PlumberDetails> plumbers;
-  List<PainterDetails> painters;
-  List<WelderDetails> welders;
+/// Not Used In application
+//
+// class ConstructionDetails {
+//   List<ContractorDetails> contractors;
+//   List<LaborerDetails> laborers;
+//   List<ElectricianDetails> electricians;
+//   List<PlumberDetails> plumbers;
+//   List<PainterDetails> painters;
+//   List<WelderDetails> welders;
+//
+//   ConstructionDetails({
+//     required this.contractors,
+//     required this.laborers,
+//     required this.electricians,
+//     required this.plumbers,
+//     required this.painters,
+//     required this.welders,
+//   });
+// }
+//
+// // Create an instance of ConstructionDetails with the lists of details
+// ConstructionDetails constructionDetails = ConstructionDetails(
+//   contractors: contractors,
+//   laborers: laborer,
+//   electricians: electrition,
+//   plumbers: plumber,
+//   painters: painters,
+//   welders: welders,
+// );
 
-  ConstructionDetails({
-    required this.contractors,
-    required this.laborers,
-    required this.electricians,
-    required this.plumbers,
-    required this.painters,
-    required this.welders,
-  });
-}
 
-// Create an instance of ConstructionDetails with the lists of details
-ConstructionDetails constructionDetails = ConstructionDetails(
-  contractors: contractors,
-  laborers: laborer,
-  electricians: electrition,
-  plumbers: plumber,
-  painters: painters,
-  welders: welders,
-);
 
+/// Contractor
 
 class ContractorDetails{
   final String name;
@@ -106,6 +114,8 @@ class ContractorDetails{
   });
 }
 
+
+/// Laborer
 class LaborerDetails {
   final String name;
   final String Images;
@@ -134,6 +144,8 @@ class LaborerDetails {
   });
 }
 
+
+///
 class ElectricianDetails {
   final String name;
   final String Images;

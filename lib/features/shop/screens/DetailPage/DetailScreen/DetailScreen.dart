@@ -53,7 +53,8 @@ class _DetailSccreenSectionState extends State<DetailSccreenSection> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Obx(() => Text(appBarTitle.value)),
+        title: Obx(() => Text(appBarTitle.value,style: CtextTheme.Welcomestyle)),
+        backgroundColor: dark ? CColor.dark : CColor.textsecondary,
       ),
 
       body: SingleChildScrollView(
@@ -369,9 +370,11 @@ class _DetailSccreenSectionState extends State<DetailSccreenSection> {
           padding: const EdgeInsets.all(5.0),
           child: Column(
             children: [
-              Text(
-                service,
-                style: const TextStyle(fontSize: 16),
+              Expanded(
+                child: Text(
+                  service,
+                  style: const TextStyle(fontSize: 16),
+                ),
               ),
               Flexible(
                 child: Row(

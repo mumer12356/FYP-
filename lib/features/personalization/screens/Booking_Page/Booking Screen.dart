@@ -17,10 +17,11 @@ class BookingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = CHelperFunctions.isDarkMode(context);
     return Scaffold(
-
         appBar: AppBar(
-        title: const Text('Booking Page'),
+          backgroundColor: dark ? CColor.dark : CColor.textsecondary,
+        title:  Text('Booking Page',style: CtextTheme.Welcomestyle),
         leading: InkWell(
           onTap: () {
             Navigator.push(

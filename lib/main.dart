@@ -1,5 +1,6 @@
 
 import '../../../../utils/constants/exports.dart';
+import 'features/shop/controllers/favorite_controller.dart';
 
 Future<void> main() async {
   ///  Add Widget Binding
@@ -16,10 +17,8 @@ Future<void> main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform).then(
         (FirebaseApp value)=> Get.put(AuthenticationRepository()),
   );
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
 
+  Get.put(FavoritesController()); // Initializes the controller
   runApp(const MyApp());
 }
 

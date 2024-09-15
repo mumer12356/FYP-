@@ -19,15 +19,19 @@ class PopularServicesTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = CHelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: dark ? CColor.dark : CColor.textsecondary,
         leading: InkWell(
             onTap: () {
               Navigator.pop(context);
             },
             child: const Icon(Icons.arrow_back,)),
-        title: const Text('Popular Page',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-        centerTitle: true,
+        title:  Text('Popular Page',
+            style: CtextTheme.Welcomestyle
+
+      ),
       ),
       body: SingleChildScrollView(
         //scrollDirection: Axis.horizontal,

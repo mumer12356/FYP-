@@ -5,9 +5,14 @@ class ReAuthLoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = CHelperFunctions.isDarkMode(context);
     final controller = UserController.instance;
     return Scaffold(
-      appBar: const CAppBAr(title: Text('Re-Authenticate User',) ),
+
+      appBar: AppBar(
+        backgroundColor: dark ? CColor.dark : CColor.textsecondary,
+        title:  Text('Re-Authenticate User',style: CtextTheme.Welcomestyle),
+      ),
 
       body: SingleChildScrollView(
         child: Padding(

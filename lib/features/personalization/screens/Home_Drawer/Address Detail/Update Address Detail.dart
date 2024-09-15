@@ -81,17 +81,18 @@ class _UpdateAddressDetailState extends State<UpdateAddressDetail> {
 
   @override
   Widget build(BuildContext context) {
+    final dark = CHelperFunctions.isDarkMode(context);
+
     return Scaffold(
-      backgroundColor: CColor.darkGrey,
       appBar: AppBar(
-        title: const Text('Update Address Detail'),
+        backgroundColor: dark ? CColor.dark : CColor.textsecondary,
+        title:  Text('Update Address Detail',style: CtextTheme.Welcomestyle),
         leading: InkWell(
             onTap: () {
-              Get.to(const HomeScreen());
+              Get.to(()=> HomeScreen());
             },
             child: const Icon(Icons.arrow_back_ios)),
       ),
-
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
